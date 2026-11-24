@@ -1,0 +1,64 @@
+{
+  "data": "synthetic athlete",
+  "load_metric": "effective_tonnage",
+  "sets": 867,
+  "days": 240,
+  "recovery_baseline": "prior 28 days only (causal)",
+  "load_ratio_interpretation": "descriptive only; no injury-risk threshold",
+  "banister_fit": {
+    "params": {
+      "p0": 96.882,
+      "k1": 18.974,
+      "k2": 20.0,
+      "tau1": 16.371,
+      "tau2": 14.5
+    },
+    "ordered_time_constants": true,
+    "observed_rmse": 4.091,
+    "gain_at_upper_bound": true,
+    "interpretation": "fit parameters require identifiability diagnostics"
+  },
+  "taper_days_to_peak_model_form": 8,
+  "load_to_hrv_lag_correlations": {
+    "0": 0.191,
+    "1": -0.398,
+    "2": -0.134,
+    "3": -0.003
+  },
+  "next_day_hrv_prediction": {
+    "mae_model": 0.6455,
+    "mae_persistence": 0.9227,
+    "improvement_pct": 30.0,
+    "fold_mae_model": [
+      0.6608,
+      0.6325,
+      0.7713,
+      0.5687,
+      0.5944
+    ],
+    "fold_mae_persistence": [
+      0.9636,
+      0.8009,
+      0.9061,
+      0.9529,
+      0.9897
+    ],
+    "mean_standardised_coefficients": {
+      "load_z": -0.4571,
+      "sleep_z": 0.0667,
+      "hrv_z": 0.4483,
+      "acwr": -0.1326
+    },
+    "n_obs": 229,
+    "cv_gap_days": 1
+  },
+  "todays_planning_heuristic": {
+    "session": "posterior focus",
+    "volume_multiplier": 1.0,
+    "reasons": [
+      "readiness heuristic -1.0 sd and load ratio 1.18 select the neutral volume branch",
+      "posterior is at 90% of its preceding-28-day weekly average, the largest gap"
+    ],
+    "status": "illustrative planning heuristic; not injury or medical advice"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "prediction_known_truth": {
+    "worlds": 100,
+    "median_improvement_vs_persistence_pct": 28.25,
+    "p05_p95_improvement_pct": [
+      22.68,
+      34.21
+    ],
+    "fraction_beating_persistence": 1.0,
+    "fraction_beating_recovery_only": 1.0,
+    "median_mae_full": 0.6593,
+    "median_mae_recovery_only": 0.7905,
+    "median_mae_persistence": 0.9212,
+    "median_lag1_load_hrv_correlation": -0.424,
+    "fraction_negative_load_coefficient": 1.0,
+    "interpretation": "Controlled synthetic validation only; it establishes that the pipeline can recover the coupling deliberately planted in this generator, not that HRV is predictably driven by training load in a real athlete."
+  },
+  "banister_identifiability": {
+    "worlds_per_scenario": 100,
+    "truth": {
+      "p0": 100.0,
+      "k1": 1.0,
+      "k2": 1.7,
+      "tau1": 35.0,
+      "tau2": 9.0
+    },
+    "scenarios": {
+      "dense_clean": {
+        "observation_spacing_days": 2,
+        "observation_noise_sd": 0.0,
+        "tau1_median": 35.0,
+        "tau1_p05_p95": [
+          35.0,
+          35.0
+        ],
+        "tau2_median": 9.0,
+        "tau2_p05_p95": [
+          9.0,
+          9.0
+        ],
+        "median_tau1_relative_error_pct": 0.0,
+        "median_tau2_relative_error_pct": 0.0,
+        "median_observed_rmse": 0.0,
+        "median_full_truth_rmse": 0.0
+      },
+      "weekly_noisy": {
+        "observation_spacing_days": 7,
+        "observation_noise_sd": 3.0,
+        "tau1_median": 35.733,
+        "tau1_p05_p95": [
+          20.476,
+          48.481
+        ],
+        "tau2_median": 8.307,
+        "tau2_p05_p95": [
+          4.336,
+          19.87
+        ],
+        "median_tau1_relative_error_pct": 13.03,
+        "median_tau2_relative_error_pct": 27.62,
+        "median_observed_rmse": 2.63,
+        "median_full_truth_rmse": 1.979
+      }
+    },
+    "interpretation": "Dense noiseless data are a code-recovery check. Weekly noisy observations stress practical identifiability; broad parameter ranges can coexist with reasonable fits, so fitted time constants are not physiological facts."
+  }
+}

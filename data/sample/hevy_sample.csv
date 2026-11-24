@@ -1,0 +1,12 @@
+title,start_time,end_time,description,exercise_title,superset_id,exercise_notes,set_index,set_type,weight_kg,reps,distance_km,duration_seconds,rpe
+Push Day,"12 Aug 2025, 18:03","12 Aug 2025, 19:10",,Bench Press (Barbell),,,0,warmup,40,10,,,
+Push Day,"12 Aug 2025, 18:03","12 Aug 2025, 19:10",,Bench Press (Barbell),,,1,normal,80,8,,,8
+Push Day,"12 Aug 2025, 18:03","12 Aug 2025, 19:10",,Bench Press (Barbell),,,2,normal,80,7,,,9
+Push Day,"12 Aug 2025, 18:03","12 Aug 2025, 19:10",,Overhead Press (Barbell),,,0,normal,45,8,,,8
+Push Day,"12 Aug 2025, 18:03","12 Aug 2025, 19:10",,Lateral Raise (Dumbbell),,,0,normal,10,12,,,
+Pull Day,"14 Aug 2025, 18:00","14 Aug 2025, 19:05",,Deadlift (Barbell),,,0,normal,140,5,,,8
+Pull Day,"14 Aug 2025, 18:00","14 Aug 2025, 19:05",,Lat Pulldown (Cable),,,0,normal,60,10,,,
+Pull Day,"14 Aug 2025, 18:00","14 Aug 2025, 19:05",,Bicep Curl (Dumbbell),,,0,normal,14,10,,,
+Leg Day,"16 Aug 2025, 10:00","16 Aug 2025, 11:10",,Squat (Barbell),,,0,normal,110,6,,,9
+Leg Day,"16 Aug 2025, 10:00","16 Aug 2025, 11:10",,Squat (Barbell),,,1,failure,110,5,,,10
+Leg Day,"16 Aug 2025, 10:00","16 Aug 2025, 11:10",,Leg Press,,,0,normal,180,10,,,
