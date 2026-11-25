@@ -237,3 +237,23 @@ Claims to avoid:
 - “the model tells me exactly how many days to taper”;
 - “HRV can be predicted 28% better in real life”;
 - “the fitted taus are my physiological fitness and fatigue constants”.
+
+## Notes moved from the README
+
+- Hevy ingestion: `ingest.py` validates the set export, maps exercises to broad muscle groups and computes plain tonnage, a heuristic RPE-weighted `effective_tonnage`, session-level Epley e1RM trajectories, strict estimated-PR improvements and weekly muscle-group volume. Missing RPE falls back to 8, so the weighted metric then equals plain tonnage. Negative loads or reps, impossible RPE values, duplicate set rows and missing required columns fail loudly.
+- Apple Health: `export.xml` is streamed, not loaded whole. The parser extracts HRV SDNN, resting heart rate and asleep intervals. Overlapping asleep records are merged before summing, using timezone-aware timestamps, and overnight sleep is attributed to the local date on which it ends.
+- Load ratio: the function keeps the name `acwr` for compatibility. I read it as a descriptive recent-to-baseline load signal. I do not claim that 0.8 to 1.3 is a sweet spot, that a ratio above 1.3 causes injury or that managing the ratio prevents injury.
+- Readiness score: `HRV z - 0.5 x resting-HR z + 0.5 x sleep z`, each relative to the previous 28 days only. It is a project heuristic and not a validated physiological index.
+- Next-day prediction: a ridge model on today's causal load z-score, sleep z-score, HRV z-score and load ratio, evaluated with expanding `TimeSeriesSplit`, a one-day embargo and fold-local scaling. The baseline is persistence.
+- Banister fit: `tau_slow > tau_fast` is enforced and the optimiser uses deterministic multi-start nonlinear least squares. In the checked-in end-to-end run one gain sits at its bound, which is a diagnostic warning.
+- Planning heuristic: the session suggestion combines the readiness heuristic, the load ratio and muscle-group volume against the preceding 28-day weekly average. Each branch returns its reasons and a status string saying it is an illustrative heuristic and not injury or medical advice. The weekly report uses neutral descriptive wording; the earlier "sweet spot / spike territory / cut volume" language was removed.
+- The CLI fails if real-data mode is only partly specified, and does not fall back to synthetic data.
+- Test coverage (19 tests): Epley and PR logic, Hevy validation and RPE weighting, Apple Health parsing and sleep merging, causal rolling baselines, ordered Banister recovery and noisy fits, the embargoed prediction, future-safe load features, non-overlapping volume baselines, recommender branches, report wording and small regression versions of both audits.
+
+References:
+
+- Impellizzeri FM et al. Acute:Chronic Workload Ratio: Conceptual Issues and Fundamental Pitfalls. International Journal of Sports Physiology and Performance (2020). PMID 32502973.
+- Wang C et al. Acute to chronic workload ratio (ACWR) for predicting sports injury risk: a systematic review and meta-analysis (2025). PMID 41029871.
+- Vanrenterghem J et al. The Fitness-Fatigue Model: What's in the Numbers? International Journal of Sports Physiology and Performance (2022). PMID 35320776.
+- Hellard P et al. Assessing the limitations of the Banister model in monitoring training. Journal of Sports Sciences (2006). PMID 16608765.
+- Statistical flaws of the fitness-fatigue sports performance prediction model. PMID 39881202.
